@@ -1,0 +1,51 @@
+AWSTemplateFormatVersion: "2010-09-09"
+
+Description:  Amplify for QA 
+
+Resources:
+
+  amplifyiamrole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - "amplify.amazonaws.com"
+            Action:
+                - sts:AssumeRole 
+      Policies:  
+          - PolicyName: ampqa
+            PolicyDocument:
+              Version: "2012-10-17"
+              Statement:
+                - Effect: Allow
+                  Action:
+                   - logs:CreateLogStream
+                   - logs:PutLogEvents
+                   - logs:CreateLogGroup 
+                   - logs:DescribeLogGroups
+                  Resource: 
+                   - "arn:aws:logs:us-east-1:718410105916:log-group:/aws/amplify/*:log-stream:*"
+                   - "arn:aws:logs:us-east-1:718410105916:log-group:/aws/amplify/*"
+                   - "arn:aws:logs:us-east-1:718410105916:log-group:*" 
+  qaapp:    
+    Type: AWS::Amplify::App
+    Properties: 
+     AccessToken: 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
+     Description: QA Amplify
+     IAMServiceRole: !Ref amplifyiamrole
+     Name: bi-cores-frontend-QA
+     Platform: WEB_COMPUTE
+     Repository: https://github.com/BuzzIntegrations/bi-core-frontend 
+  qabranch:
+     Type: AWS::Amplify::Branch
+     Properties:
+      AppId: !Ref qaapp 
+      BranchName: QA
+      Description: QA Amplify
+      Framework: String
+      Stage: QA
+  
