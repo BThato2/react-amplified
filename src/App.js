@@ -9,6 +9,9 @@ import '@aws-amplify/ui-react/styles.css';
 
 
 import awsExports from "./aws-exports";
+
+awsExports.oauth.redirectSignIn = `${window.location.origin}/`;
+awsExports.oauth.redirectSignOut = `${window.location.origin}/`;
 Amplify.configure(awsExports);
 
 const initialState = { name: '', description: '' }
