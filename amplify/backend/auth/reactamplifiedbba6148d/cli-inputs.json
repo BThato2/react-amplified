@@ -1,8 +1,6 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "reactamplifiedbba6148d_identitypool_bba6148d",
-    "allowUnauthenticatedIdentities": false,
     "resourceNameTruncated": "reactabba6148d",
     "userPoolName": "reactamplifiedbba6148d_userpool_bba6148d",
     "autoVerifiedAttributes": [
@@ -35,13 +33,13 @@
     "userpoolClientSetAttributes": false,
     "sharedId": "bba6148d",
     "resourceName": "reactamplifiedbba6148d",
-    "authSelections": "identityPoolAndUserPool",
-    "useDefault": "defaultSocial",
+    "authSelections": "userPoolOnly",
+    "useDefault": "manual",
     "hostedUI": true,
     "usernameAttributes": [
       "email"
     ],
-    "hostedUIDomainName": "reactamplifiedbba6148d-bba6148d",
+    "hostedUIDomainName": "proceptgql5d4b5c6d-dev",
     "authProvidersUserPool": [],
     "hostedUIProviderMeta": "[]",
     "userPoolGroupList": [],
@@ -61,7 +59,32 @@
       ]
     },
     "breakCircularDependency": true,
-    "dependsOn": [],
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://main.djl3p26egft3d.amplifyapp.com/\",\"http://localhost:3000/\"],\"LogoutURLs\":[\"https://main.djl3p26egft3d.amplifyapp.com/\",\"http://localhost:3000/\"]}"
+    "dependsOn": [
+      {
+        "category": "function",
+        "resourceName": "reactamplifiedbba6148dPostConfirmation",
+        "triggerProvider": "Cognito",
+        "attributes": [
+          "Arn",
+          "Name"
+        ]
+      }
+    ],
+    "userPoolGroups": false,
+    "adminQueries": false,
+    "triggers": {
+      "PostConfirmation": [
+        "add-to-group"
+      ]
+    },
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"implicit\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://main.djl3p26egft3d.amplifyapp.com/\",\"http://localhost:3000/\"],\"LogoutURLs\":[\"https://main.djl3p26egft3d.amplifyapp.com/\",\"http://localhost:3000/\"]}",
+    "authProviders": [],
+    "parentStack": {
+      "Ref": "AWS::StackId"
+    },
+    "authTriggerConnections": "[\n  {\n    \"triggerType\": \"PostConfirmation\",\n    \"lambdaFunctionName\": \"reactamplifiedbba6148dPostConfirmation\"\n  }\n]",
+    "permissions": [
+      "{\n  \"policyName\": \"AddToGroupCognito\",\n  \"trigger\": \"PostConfirmation\",\n  \"effect\": \"Allow\",\n  \"actions\": [\n    \"cognito-idp:AdminAddUserToGroup\",\n    \"cognito-idp:GetGroup\",\n    \"cognito-idp:CreateGroup\"\n  ],\n  \"resource\": {\n    \"paramType\": \"!GetAtt\",\n    \"keys\": [\n      \"UserPool\",\n      \"Arn\"\n    ]\n  }\n}"
+    ]
   }
 }
