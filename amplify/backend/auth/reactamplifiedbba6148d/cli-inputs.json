@@ -62,6 +62,6 @@
     },
     "breakCircularDependency": true,
     "dependsOn": [],
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://main.djl3p26egft3d.amplifyapp.com/\"],\"LogoutURLs\":[\"https://main.djl3p26egft3d.amplifyapp.com/\",\"http://localhost:3000/\"]}"
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://main.djl3p26egft3d.amplifyapp.com/\",\"http://localhost:3000/\"],\"LogoutURLs\":[\"https://main.djl3p26egft3d.amplifyapp.com/\",\"http://localhost:3000/\"]}"
   }
 }

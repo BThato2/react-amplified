@@ -13,3 +13,18 @@
 <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://dev-35491235.okta.com/app/dev-35491235_reactamplified_1/exkald9lloBKvAwya5d7/sso/saml"/>
 </md:IDPSSODescriptor>
 </md:EntityDescriptor>
+
+
+https://reactamplifiedbba6148d-bba6148d-dev.auth.us-east-1.amazoncognito.com/login?response_type=token&client_id=58b7v87i4u9khl96g1ulseind3&redirect_uri=https://main.djl3p26egft3d.amplifyapp.com/
+
+
+
+
+https://reactamplifiedbba6148d-bba6148d-dev.auth.us-east-1.amazoncognito.com/saml2/idpresponse
+urn:amazon:cognito:sp:us-east-1_yjLE7oJZe
+
+<Button
+  onClick={() => Auth.federatedSignIn({provider: "Okta"})}
+>
+  Federated Sign In
+</Button>
