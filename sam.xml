@@ -12,4 +12,4 @@
 <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://dev-35491235.okta.com/app/dev-35491235_amplifyokta_1/exkaljzlmqrsD1RI55d7/sso/saml"/>
 <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://dev-35491235.okta.com/app/dev-35491235_amplifyokta_1/exkaljzlmqrsD1RI55d7/sso/saml"/>
 </md:IDPSSODescriptor>
-</md:EntityDescriptor>
+</md:EntityDescriptor

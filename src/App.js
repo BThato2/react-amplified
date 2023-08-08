@@ -66,7 +66,7 @@ function App() {
   return (
     <div>
 
-   <iframe src="Testfirst.html"></iframe>
+   <iframe src="Testfirst.html" width={640} height={600}></iframe>
 
       <p>User: {user ? JSON.stringify(user.attributes) : 'None'}</p>
       {user ? (
