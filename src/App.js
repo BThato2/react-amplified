@@ -62,15 +62,11 @@ function App() {
       .then(userData => userData)
       .catch(() => console.log('Not signed in'));
   }
-  
 
   return (
     <div>
 
-
-      <button onClick={() => Auth.federatedSignIn()}>Start Chat</button>
-
-
+   <iframe src="Testfirst.html"></iframe>
 
       <p>User: {user ? JSON.stringify(user.attributes) : 'None'}</p>
       {user ? (
