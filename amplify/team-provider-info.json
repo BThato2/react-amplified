@@ -13,15 +13,27 @@
       "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-reactamplified-dev-155811-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
-      "auth": {
-        "reactamplifiedbba6148d": {}
-      },
       "function": {
         "reactamplifiedbba6148dPostConfirmation": {
           "GROUP": "B",
           "deploymentBucketName": "amplify-reactamplified-dev-155811-deployment",
           "s3Key": "amplify-builds/reactamplifiedbba6148dPostConfirmation-77472f544e374c354855-build.zip"
+        },
+        "ThatoPostConfirmation": {
+          "GROUP": "",
+          "deploymentBucketName": "amplify-reactamplified-dev-155811-deployment",
+          "s3Key": "amplify-builds/ThatoPostConfirmation-544c4d4e443236514a47-build.zip"
         }
+      },
+      "api": {
+        "reactamplified": {}
+      },
+      "auth": {
+        "Thato": {},
+        "userPoolGroups": {}
+      },
+      "storage": {
+        "s31dc83008": {}
       }
     }
   }

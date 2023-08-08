@@ -1,6 +1,24 @@
 {
+  "api": {
+    "reactamplified": {
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [],
+          "defaultAuthentication": {
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 7
+            },
+            "authenticationType": "API_KEY"
+          }
+        }
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync"
+    }
+  },
   "auth": {
-    "reactamplifiedbba6148d": {
+    "Thato": {
       "customAuth": false,
       "dependsOn": [
         {
@@ -9,7 +27,7 @@
             "Name"
           ],
           "category": "function",
-          "resourceName": "reactamplifiedbba6148dPostConfirmation",
+          "resourceName": "ThatoPostConfirmation",
           "triggerProvider": "Cognito"
         }
       ],
@@ -35,9 +53,30 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
+    },
+    "userPoolGroups": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId",
+            "AppClientIDWeb",
+            "AppClientID",
+            "IdentityPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "Thato"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito-UserPool-Groups"
     }
   },
   "function": {
+    "ThatoPostConfirmation": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "reactamplifiedbba6148dPostConfirmation": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -45,6 +84,30 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_ThatoPostConfirmation_GROUP": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "ThatoPostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_ThatoPostConfirmation_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "ThatoPostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_ThatoPostConfirmation_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "ThatoPostConfirmation"
+        }
+      ]
+    },
     "AMPLIFY_function_reactamplifiedbba6148dPostConfirmation_GROUP": {
       "usedBy": [
         {
@@ -68,6 +131,13 @@
           "resourceName": "reactamplifiedbba6148dPostConfirmation"
         }
       ]
+    }
+  },
+  "storage": {
+    "s31dc83008": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
     }
   }
 }

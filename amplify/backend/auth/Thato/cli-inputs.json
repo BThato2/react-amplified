@@ -1,8 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "resourceNameTruncated": "reactabba6148d",
-    "userPoolName": "reactamplifiedbba6148d_userpool_bba6148d",
+    "identityPoolName": "proceptgql5d4b5c6d",
+    "allowUnauthenticatedIdentities": true,
+    "resourceNameTruncated": "reacta742b8f76",
+    "userPoolName": "Thato",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -29,20 +31,29 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "reactabba6148d_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "Thato742b8f76_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "bba6148d",
-    "resourceName": "reactamplifiedbba6148d",
-    "authSelections": "userPoolOnly",
+    "sharedId": "742b8f76",
+    "resourceName": "Thato",
+    "authSelections": "identityPoolAndUserPool",
     "useDefault": "manual",
-    "hostedUI": true,
     "usernameAttributes": [
       "email"
     ],
-    "hostedUIDomainName": "proceptgql5d4b5c6d-dev",
+    "userPoolGroups": false,
+    "adminQueries": false,
+    "triggers": {
+      "PostConfirmation": [
+        "add-to-group"
+      ]
+    },
+    "hostedUI": true,
+    "hostedUIDomainName": "bthato",
     "authProvidersUserPool": [],
     "hostedUIProviderMeta": "[]",
-    "userPoolGroupList": [],
+    "userPoolGroupList": [
+      "TeamA"
+    ],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
     "useEnabledMfas": true,
@@ -62,7 +73,7 @@
     "dependsOn": [
       {
         "category": "function",
-        "resourceName": "reactamplifiedbba6148dPostConfirmation",
+        "resourceName": "ThatoPostConfirmation",
         "triggerProvider": "Cognito",
         "attributes": [
           "Arn",
@@ -70,21 +81,15 @@
         ]
       }
     ],
-    "userPoolGroups": false,
-    "adminQueries": false,
-    "triggers": {
-      "PostConfirmation": [
-        "add-to-group"
-      ]
-    },
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"implicit\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://main.djl3p26egft3d.amplifyapp.com/\",\"http://localhost:3000/\"],\"LogoutURLs\":[\"https://main.djl3p26egft3d.amplifyapp.com/\",\"http://localhost:3000/\"]}",
-    "authProviders": [],
     "parentStack": {
       "Ref": "AWS::StackId"
     },
-    "authTriggerConnections": "[\n  {\n    \"triggerType\": \"PostConfirmation\",\n    \"lambdaFunctionName\": \"reactamplifiedbba6148dPostConfirmation\"\n  }\n]",
     "permissions": [
       "{\n  \"policyName\": \"AddToGroupCognito\",\n  \"trigger\": \"PostConfirmation\",\n  \"effect\": \"Allow\",\n  \"actions\": [\n    \"cognito-idp:AdminAddUserToGroup\",\n    \"cognito-idp:GetGroup\",\n    \"cognito-idp:CreateGroup\"\n  ],\n  \"resource\": {\n    \"paramType\": \"!GetAtt\",\n    \"keys\": [\n      \"UserPool\",\n      \"Arn\"\n    ]\n  }\n}"
-    ]
+    ],
+    "authProviders": [],
+    "authTriggerConnections": "[\n  {\n    \"triggerType\": \"PostConfirmation\",\n    \"lambdaFunctionName\": \"ThatoPostConfirmation\"\n  }\n]",
+    "thirdPartyAuth": true,
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\"],\"LogoutURLs\":[\"http://localhost:3000/\"]}"
   }
 }
