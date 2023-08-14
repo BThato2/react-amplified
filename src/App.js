@@ -48,7 +48,9 @@ export default function App() {
   return (
 
     
-<div style={{ width: '100%', height: '1%', aspectRatio:1000}}>
+<div style={{ width: '100%', height: '100%'}}>
+
+
  
       <Authenticator > 
       {({ signOut, user }) => (
@@ -59,6 +61,10 @@ export default function App() {
       )}
 
       </Authenticator>
+
+      <div >
+      <iframe width="600" height="600" src="Testfirst.html"></iframe>
+    </div>
    
   </div>
   );
