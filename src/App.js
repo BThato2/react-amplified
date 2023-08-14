@@ -1,81 +1,65 @@
-import { useEffect, useState } from 'react';
-import { Amplify, Auth, Hub } from 'aws-amplify';
-import awsConfig from './aws-exports';
+import {Amplify} from 'aws-amplify';
+import { createTheme, defaultTheme } from '@aws-amplify/ui';
+import { Button, useTheme, ThemeProvider,Authenticator ,ViewAmplify,AuthContainer} from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
 
-const isLocalhost = Boolean(
-  window.location.hostname === 'localhost' ||
-    // [::1] is the IPv6 localhost address.
-    window.location.hostname === '[::1]' ||
-    // 127.0.0.1/8 is considered localhost for IPv4.
-    window.location.hostname.match(
-      /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
-    )
-);
 
-// Assuming you have two redirect URIs, and the first is for localhost and second is for production
-const [
-  localRedirectSignIn,
-  productionRedirectSignIn,
-] = awsConfig.oauth.redirectSignIn.split(',');
+import awsExports from './aws-exports';
+Amplify.configure(awsExports);
 
-const [
-  localRedirectSignOut,
-  productionRedirectSignOut,
-] = awsConfig.oauth.redirectSignOut.split(',');
 
-const updatedAwsConfig = {
-  ...awsConfig,
-  oauth: {
-    ...awsConfig.oauth,
-    redirectSignIn: isLocalhost ? localRedirectSignIn : productionRedirectSignIn,
-    redirectSignOut: isLocalhost ? localRedirectSignOut : productionRedirectSignOut,
-  }
+
+export default function App() {
+  const { tokens } = useTheme();
+  const amplifyUITheme = {
+    name: 'amplify-theme',
+    tokens: {
+      components: {
+        button: {
+          primary: {
+            backgroundColor: { value: '{colors.green.80}' },
+            _hover: {
+              backgroundColor: { value: '{colors.green.90}' }
+            },
+            _focus: {
+              backgroundColor: { value: '{colors.green.90}' },
+            },
+            _active: {
+              backgroundColor: { value: '{colors.green.90}' },
+            }
+          },
+          
+        },
+        
+        sliderfield: {
+          track: {
+            backgroundColor: { value: '{colors.green.20}'}
+          },
+          range: {
+            backgroundColor: { value: '{colors.green.60}' }
+          }
+        },
+      
+      }
+    }
 }
 
-Amplify.configure(updatedAwsConfig);
-
-function App() {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    Hub.listen('auth', ({ payload: { event, data } }) => {
-      switch (event) {
-        case 'signIn':
-        case 'cognitoHostedUI':
-          getUser().then(userData => setUser(userData));
-          break;
-        case 'signOut':
-          setUser(null);
-          break;
-        case 'signIn_failure':
-        case 'cognitoHostedUI_failure':
-          console.log('Sign in failure', data);
-          break;
-      }
-    });
-
-    getUser().then(userData => setUser(userData));
-  }, []);
-
-  function getUser() {
-    return Auth.currentAuthenticatedUser()
-      .then(userData => userData)
-      .catch(() => console.log('Not signed in'));
-  }
 
   return (
-    <div>
 
-   <iframe src="Testfirst.html" width={640} height={600}></iframe>
-
-      <p>User: {user ? JSON.stringify(user.attributes) : 'None'}</p>
-      {user ? (
-        <button onClick={() => Auth.signOut()}>Sign Out</button>
-      ) : (
-        <button onClick={() => Auth.federatedSignIn()}>Federated Sign In</button>
+    
+<div style={{ width: '100%', height: '1%', aspectRatio:1000}}>
+ 
+      <Authenticator > 
+      {({ signOut, user }) => (
+        <main>
+          <h1>Hello {user.username}</h1>
+          <button onClick={signOut}>Sign out</button>
+        </main>
       )}
-    </div>
+
+      </Authenticator>
+   
+  </div>
   );
 }
-
-export default App;

@@ -13,3 +13,25 @@
 <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://dev-35491235.okta.com/app/dev-35491235_amplifyokta_1/exkaljzlmqrsD1RI55d7/sso/saml"/>
 </md:IDPSSODescriptor>
 </md:EntityDescriptor
+
+
+3f60421c-2175-50e2-8f68-1f512c4c31eb,
+787ed38a-c573-5f4b-9309-8ec7c2109b98
+6684862a-7298-588d-b0b9-db677617b9f8
+ace1393c-71fa-539b-8b63-6470862d902a
+179df5ed-6cf3-5770-b454-a8a19d08da84
+01fce512-05a4-58d1-aeb4-b85ee3e730c4
+
+
+
+f60421c-2175-50e2-8f68-1f512c4c31eb,
+787ed38a-c573-5f4b-9309-8ec7c2109b98,
+6684862a-7298-588d-b0b9-db677617b9f8,
+ace1393c-71fa-539b-8b63-6470862d902a,
+179df5ed-6cf3-5770-b454-a8a19d08da84,
+01fce512-05a4-58d1-aeb4-b85ee3e730c4
+
+Correspondence
+https://t.corp.amazon.com/3517416c-9884-4283-abe1-0dcf2cfe23a4/communication#e0aa70da-d2f9-49fa-82fe-9355424eb16c
+Copy Link
+Edit
