@@ -5,14 +5,14 @@ FROM node: 20-alpine
 WORKDIR /app
 
 # install application dependencies
-COPY package.json .
+COPY package*.json .
 COPY package-lock.json .
 RUN npm i
 
 # add app
 COPY . .
 
-EXPOSE 3000
+EXPOSE :5173
 
 # start app
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]
