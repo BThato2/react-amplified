@@ -6,7 +6,6 @@ WORKDIR /app
 
 # install application dependencies
 COPY package*.json .
-COPY package-lock.json .
 RUN npm i
 
 # add app
